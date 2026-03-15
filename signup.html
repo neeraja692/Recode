@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #EDE8D0; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+
+    .login-container h1 {
+      margin-bottom: 20px;
+      color: #333333;
+    }
+
+   .login-container label {
+      display: block;
+      text-align: left;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333333;
+    }
+
+    .login-container input,
+    .login-container select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-container input[type="submit"],
+    .login-container button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #333333; 
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+     .login-container input[type="submit"]:hover,
+    .login-container button:hover {
+      background-color: #555555; 
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Sign Up Page</h1>
+    <p>Hey User, Welcome to SecureComm 👋</p>
+
+    
+    <form id="signupForm" action="/signup" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="username">Create Username:</label>
+      <input type="text" id="username" placeholder="Enter your username" required>
+
+      <label for="password">Create Password:</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+
+      <label for="choose">Choose your role:</label>
+      <select id="choose" required>
+        <option value="">--Select Role--</option>
+        <option value="admin">Admin</option>
+        <option value="moderator">Moderator</option>
+        <option value="member">Member</option>
+      </select>
+      <input type="submit" value="Sign Up">
+    </form>
+
+    <p>Already signed in?</p>
+    <button onclick="window.location.href='login.html'">Login</button>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      const role = document.getElementById("choose").value;
+
+      if (role === "admin") {
+        window.location.href = "admin.html"; 
+      } else if (role === "moderator") {
+        window.location.href = "moderator.html"; // redirect to Moderator page
+      } else {
+        window.location.href = "follow.html"; // default for Member
+      }
+    });
+  </script>
+</body>
+</html>

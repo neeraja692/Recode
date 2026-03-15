@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #EDE8D0; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .login-container {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    .login-container h1 {
+      margin-bottom: 20px;
+      color: #333333; 
+    }
+    .login-container label {
+      display: block;
+      text-align: left;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #333333; 
+      }
+    .login-container input,
+    .login-container select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .login-container input[type="submit"] {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background-color: #333333; 
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .login-container input[type="submit"]:hover {
+      background-color: #555555; 
+    }
+</style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Login Page</h1>
+    <form id="loginForm" action="/login" method="POST">
+      <label for="name">UserName:</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+
+      <label for="choose">Choose your role:</label>
+      <select id="choose" required>
+        <option value="">--Select Role--</option>
+        <option value="admin">Admin</option>
+        <option value="moderator">Moderator</option>
+        <option value="member">Member</option>
+      </select>
+
+      <input type="submit" value="Login">
+    </form>
+  </div>
+<script>
+     document.getElementById("loginForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+      const username = document.getElementById("name").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const role = document.getElementById("choose").value;
+
+      if (username === "") {
+        alert("Please enter your username.");
+        return;
+      }
+
+      if (password === "") {
+        alert("Please enter your password.");
+        return;
+      }
+
+      if (role === "") {
+        alert("Please select a role.");
+        return;
+      }
+
+      alert("Login successful as " + role + "!");
+
+      
+      if (role === "admin") {
+        window.location.href = "admin.html";
+      } else if (role === "moderator") {
+        window.location.href = "moderator.html";
+      } else {
+        window.location.href = "follow.html";
+      }
+ }
+    );
+  </script>
+</body>
+</html>
